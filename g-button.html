@@ -1,0 +1,22 @@
+<polymer-element name="g-button" attributes="label type onClick disabled context">
+	<template>
+		<link rel="stylesheet" href="g-button.css">
+		<button class="form-control btn-{{ type }}" on-click="{{ handleOnClick }}" disabled?="{{ disabled }}">{{ label }}</button>
+	</template>
+	<script>
+    	Polymer({
+
+    		label    : 'Label',
+    		type     : 'default',
+    		disabled : false,
+    		context  : null,
+    		
+			handleOnClick: function(evt, detail, sender) {
+				if(this.onClick)
+				{
+					this.onClick.apply(this.context, [evt, detail, sender]);
+				}
+			}
+    	});
+	</script>
+</polymer-element>
